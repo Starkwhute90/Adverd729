@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Countdown to 2025</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #1a1a1a;
+      font-family: Arial, sans-serif;
+      color: #f5f5f5;
+    }
+
+    #countdown {
+      font-size: 4rem;
+      font-weight: 300;
+    }
+  </style>
+</head>
+<body>
+  <div id="countdown"></div>
+
+  <script>
+    const targetDate = new Date("January 1, 2025 00:00:00").getTime();
+
+    const countdownTimer = setInterval(function() {
+      const now = new Date().getTime();
+      const timeRemaining = targetDate - now;
+
+      const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").textContent = 
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+      if (timeRemaining < 0) {
+        clearInterval(countdownTimer);
+        document.getElementById("countdown").textContent = "Happy New Year 2025!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>￼Enter
